@@ -1,0 +1,41 @@
+<form [formGroup]="formulario" (ngSubmit)="submitForm()" class="formulario">
+    <div class="campo">
+      <label for="cedula">Cédula:</label>
+      <input type="text" id="cedula" formControlName="cedula" required>
+      <div *ngIf="formulario.get('cedula')?.invalid && (formulario.get('cedula')?.dirty || formulario.get('cedula')?.touched)">
+        <small class="text-danger" *ngIf="formulario.get('cedula')?.errors?.['required']">Campo obligatorio.</small>
+      </div>
+    </div>
+    <div class="campo">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" formControlName="nombre" required>
+      <div *ngIf="formulario.get('nombre')?.invalid && (formulario.get('nombre')?.dirty || formulario.get('nombre')?.touched)">
+        <small class="text-danger" *ngIf="formulario.get('nombre')?.errors?.['required']">Campo obligatorio.</small>
+      </div>
+    </div>
+    <div class="campo">
+      <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+      <input type="date" id="fechaNacimiento" formControlName="fechaNacimiento" required>
+      <div *ngIf="formulario.get('fechaNacimiento')?.invalid && (formulario.get('fechaNacimiento')?.dirty || formulario.get('fechaNacimiento')?.touched)">
+        <small class="text-danger" *ngIf="formulario.get('fechaNacimiento')?.errors?.['required']">Campo obligatorio.</small>
+      </div>
+    </div>
+    <div class="campo">
+      <label for="ciudad">Ciudad:</label>
+      <select id="ciudad" formControlName="ciudad" required>
+        <option value="" disabled selected>Selecciona una ciudad</option>
+        <option value="Machala">Bogotá</option>
+        <option value="Pasaje">Medellín</option>
+        <option value="Guabo">Cali</option>
+
+      </select>
+      <div *ngIf="formulario.get('ciudad')?.invalid && (formulario.get('ciudad')?.dirty || formulario.get('ciudad')?.touched)">
+        <small class="text-danger" *ngIf="formulario.get('ciudad')?.errors?.['required']">Campo obligatorio.</small>
+      </div>
+    </div>
+    <div class="botones">
+      <button type="submit" [disabled]="formulario.invalid">OK</button>
+      <button type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+  
